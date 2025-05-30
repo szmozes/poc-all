@@ -1,35 +1,44 @@
 package hu.szmozes.filterspecification.model
 
-class SearchRequest {
-    lateinit var pageNumber: String
-    lateinit var pageSize: String
-    lateinit var specification: Specification
-    lateinit var orders: List<Order>
-
-    class Specification {
-        lateinit var filters: List<Filter>
-        lateinit var logic: Logic
-        lateinit var nestedSpecification: Specification
-
+data class SearchRequest(
+    val pageNumber: Int = 0,
+    val pageSize: Int = 20,
+    val specification: Specification = Specification(),
+    val orders: List<Order> = emptyList()
+) {
+    data class Specification(
+        val filters: List<Filter> = emptyList(),
+        val logic: Logic = Logic.AND,
+        val nestedSpecifications: List<Specification> = emptyList()
+    ) {
         enum class Logic {
             AND, OR
         }
 
-        class Filter {
-            lateinit var propertyPath: String
-            lateinit var propertyValue: String
-            lateinit var matchStyle: MatchStyle
-
+        data class Filter(
+            val propertyPath: String,
+            val propertyValue: String,
+            val matchStyle: MatchStyle = MatchStyle.EXACT
+        ) {
             enum class MatchStyle {
-                EXACT
+                EXACT,
+                CONTAINS,
+                STARTS_WITH,
+                ENDS_WITH,
+                GREATER_THAN,
+                LESS_THAN,
+                IN,
+                NOT_EQUAL,
+                IS_NULL,
+                IS_NOT_NULL
             }
         }
     }
 
-    class Order {
-        lateinit var propertyPath: String
-        lateinit var orderDirection: Direction
-
+    data class Order(
+        val propertyPath: String,
+        val orderDirection: Direction = Direction.ASC
+    ) {
         enum class Direction {
             ASC, DESC
         }
