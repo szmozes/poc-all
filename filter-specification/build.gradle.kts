@@ -10,6 +10,7 @@ dependencies {
     implementation(libs.springdoc.openapi.starter.webflux.ui)
     implementation(libs.spring.boot.starter.actuator)
     implementation(libs.spring.boot.starter.webflux)
+    implementation(libs.spring.boot.starter.data.jpa)
     implementation(libs.kotlin.reflect)
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.stdlib)
