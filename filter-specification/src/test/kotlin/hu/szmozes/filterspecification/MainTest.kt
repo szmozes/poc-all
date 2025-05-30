@@ -1,4 +1,4 @@
-package hu.szmozes.kotlingradle
+package hu.szmozes.filterspecification
 
 import org.junit.jupiter.api.Test
 import kotlin.test.assertTrue
