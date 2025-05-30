@@ -1,30 +1,25 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.gradle.kotlin.dsl.withType
 
-plugins {
-    val kotlinVersion = "2.0.21"
-
-    kotlin("jvm") version kotlinVersion
-    id("com.diffplug.spotless") version "6.25.0"
-    id("com.github.ben-manes.versions") version "0.51.0"
-}
-
 group = "hu.szmozes"
 version = "0.0.1-SNAPSHOT"
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testImplementation(kotlin("test"))
+plugins {
+    alias(libs.plugins.gradle.java.library)
+    alias(libs.plugins.ben.manes.versions)
+    alias(libs.plugins.spring.boot) apply false
+    alias(libs.plugins.spring.dependency.management) apply false
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.spring) apply false
+    alias(libs.plugins.lombok) apply false
+    alias(libs.plugins.spotless)
 }
 
 spotless {
     format("misc") {
         target(".gitignore", "*.yml", "*.md", "*.Dockerfile")
 
-        indentWithSpaces()
+        leadingTabsToSpaces()
         trimTrailingWhitespace()
         endWithNewline()
     }
@@ -32,18 +27,18 @@ spotless {
         ktlint()
     }
     kotlinGradle {
-        indentWithSpaces()
+        leadingTabsToSpaces()
         trimTrailingWhitespace()
         endWithNewline()
     }
 }
 
-kotlin {
-    jvmToolchain(21)
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
 }
 
-tasks.test {
-    useJUnitPlatform()
+tasks.withType<Javadoc> {
+    options.encoding = "UTF-8"
 }
 
 tasks.withType<DependencyUpdatesTask> {
@@ -53,8 +48,8 @@ tasks.withType<DependencyUpdatesTask> {
 }
 
 fun isNonStable(version: String): Boolean {
-    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA", "JRE").any { version.uppercase().contains(it) }
     val regex = "^[0-9,.v-]+(-r)?$".toRegex()
-    val isStable = stableKeyword || regex.matches(version) || version.contains("-jre")
+    val isStable = stableKeyword || regex.matches(version)
     return isStable.not()
 }

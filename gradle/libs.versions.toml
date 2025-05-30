@@ -1,0 +1,66 @@
+[versions]
+kotlin = "2.1.21"
+kengine = "1.0.2"
+mapstruct = "1.6.3"
+springdoc = "2.8.8"
+springBoot = "3.5.0"
+reactorNetty = "1.2.6"
+guava = "33.4.8-jre"
+jjwt = "0.12.6"
+springCloud = "2024.0.1"
+assertj = "3.27.3"
+springDependencyManagement = "1.1.7"
+benManesVersions = "0.52.0"
+lombokPlugin = "8.13.1"
+spotless = "7.0.4"
+
+[libraries]
+kengine = { group = "com.github.bhlangonijr", name = "kengine", version.ref = "kengine" }
+kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+mapstruct = { group = "org.mapstruct", name = "mapstruct", version.ref = "mapstruct" }
+mapstruct-processor = { group = "org.mapstruct", name = "mapstruct-processor", version.ref = "mapstruct" }
+springdoc-openapi-starter-webflux-ui = { group = "org.springdoc", name = "springdoc-openapi-starter-webflux-ui", version.ref = "springdoc" }
+springdoc-openapi-starter-webmvc-ui = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
+spring-boot-starter = { group = "org.springframework.boot", name = "spring-boot-starter", version.ref = "springBoot" }
+spring-boot-starter-data-rest = { group = "org.springframework.boot", name = "spring-boot-starter-data-rest", version.ref = "springBoot" }
+spring-boot-starter-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator" }
+spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "springBoot" }
+spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version.ref = "springBoot" }
+spring-boot-starter-webflux = { group = "org.springframework.boot", name = "spring-boot-starter-webflux" }
+spring-boot-starter-aop = { group = "org.springframework.boot", name = "spring-boot-starter-aop" }
+spring-boot-starter-data-jpa = { group = "org.springframework.boot", name = "spring-boot-starter-data-jpa" }
+spring-boot-starter-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation" }
+spring-boot-starter-security = { group = "org.springframework.boot", name = "spring-boot-starter-security" }
+spring-cloud-starter-config = { group = "org.springframework.cloud", name = "spring-cloud-starter-config" }
+spring-cloud-starter-gateway = { group = "org.springframework.cloud", name = "spring-cloud-starter-gateway" }
+spring-cloud-starter-bootstrap = { group = "org.springframework.cloud", name = "spring-cloud-starter-bootstrap" }
+spring-cloud-config-server = { group = "org.springframework.cloud", name = "spring-cloud-config-server" }
+spring-retry = { group = "org.springframework.retry", name = "spring-retry" }
+spring-context = { group = "org.springframework", name = "spring-context" }
+spring-messaging = { group = "org.springframework", name = "spring-messaging" }
+spring-websocket = { group = "org.springframework", name = "spring-websocket" }
+projectreactor-netty-core = { group = "io.projectreactor.netty", name = "reactor-netty-core", version.ref = "reactorNetty" }
+guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
+jjwt-api = { group = "io.jsonwebtoken", name = "jjwt-api", version.ref = "jjwt" }
+jjwt-impl = { group = "io.jsonwebtoken", name = "jjwt-impl", version.ref = "jjwt" }
+jjwt-jackson = { group = "io.jsonwebtoken", name = "jjwt-jackson", version.ref = "jjwt" }
+spring-cloud-starter-openfeign = { group = "org.springframework.cloud", name = "spring-cloud-starter-openfeign" }
+spring-cloud-dependencies = { group = "org.springframework.cloud", name = "spring-cloud-dependencies", version.ref = "springCloud" }
+assertj-bom = { group = "org.assertj", name = "assertj-bom", version.ref = "assertj" }
+postgres = { group = "org.postgresql", name = "postgresql" }
+jackson-kotlin = { group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin" }
+jakarta-persistence-api = { group = "jakarta.persistence", name = "jakarta.persistence-api" }
+slf4j-api = { group = "org.slf4j", name = "slf4j-api" }
+h2 = { group = "com.h2database", name = "h2" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+spring-boot = { id = "org.springframework.boot", version.ref = "springBoot" }
+spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "springDependencyManagement" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+gradle-java-library = { id = "org.gradle.java-library" }
+ben-manes-versions = { id = "com.github.ben-manes.versions", version.ref = "benManesVersions" }
+lombok = { id = "io.freefair.lombok", version.ref = "lombokPlugin" }
+gradle-java = { id = "org.gradle.java" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
