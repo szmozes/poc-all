@@ -1,5 +1,6 @@
-package hu.szmozes.filterspecification.model
+package hu.szmozes.filterspecification.utils
 
+import hu.szmozes.filterspecification.model.SearchRequest
 import jakarta.persistence.criteria.CriteriaBuilder
 import jakarta.persistence.criteria.CriteriaQuery
 import jakarta.persistence.criteria.Path
@@ -10,7 +11,7 @@ import org.springframework.data.jpa.domain.Specification
 object JpaSpecificationUtils {
 
     fun <T> toJpaSpecification(specification: SearchRequest.Specification): Specification<T> {
-        return Specification { root: Root<T>, query: CriteriaQuery<*>, cb: CriteriaBuilder ->
+        return Specification { root: Root<T>, query: CriteriaQuery<*>?, cb: CriteriaBuilder ->
 
             // List of predicates from filters
             val filterPredicates = specification.filters.mapNotNull { filter ->

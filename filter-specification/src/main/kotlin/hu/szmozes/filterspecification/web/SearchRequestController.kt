@@ -1,8 +1,10 @@
 package hu.szmozes.filterspecification.web
 
+import hu.szmozes.filterspecification.entity.SampleEntity
 import hu.szmozes.filterspecification.model.SearchRequest
-import hu.szmozes.filterspecification.service.HeavyCpuLoadService
+import hu.szmozes.filterspecification.service.SampleService
 import org.slf4j.LoggerFactory
+import org.springframework.data.domain.Page
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -11,12 +13,13 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("filter-specification")
-class SearchRequestController(private val heavyCpuLoadService: HeavyCpuLoadService) {
+class SearchRequestController(private val sampleService: SampleService) {
 
     private val logger = LoggerFactory.getLogger(SearchRequestController::class.java)
 
     @PostMapping("/search")
-    fun getFibonacci(@RequestBody searchRequest: SearchRequest): ResponseEntity<Int> {
-        return ResponseEntity.ok(0)
+    fun search(@RequestBody searchRequest: SearchRequest): ResponseEntity<Page<SampleEntity>> {
+        val search = sampleService.search(searchRequest)
+        return ResponseEntity.ok(search)
     }
 }
