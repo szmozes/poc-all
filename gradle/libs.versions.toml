@@ -64,3 +64,4 @@ ben-manes-versions = { id = "com.github.ben-manes.versions", version.ref = "benM
 lombok = { id = "io.freefair.lombok", version.ref = "lombokPlugin" }
 gradle-java = { id = "org.gradle.java" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+kotlin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }

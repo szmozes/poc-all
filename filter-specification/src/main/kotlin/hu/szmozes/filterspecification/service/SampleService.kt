@@ -19,4 +19,8 @@ class SampleService(
             PagingUtils.toPageable(searchRequest)
         )
     }
+
+    fun create(sampleEntity: SampleEntity): SampleEntity {
+        return sampleRepository.save(sampleEntity)
+    }
 }

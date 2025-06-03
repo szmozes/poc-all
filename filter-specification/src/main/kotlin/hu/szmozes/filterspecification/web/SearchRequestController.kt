@@ -22,4 +22,10 @@ class SearchRequestController(private val sampleService: SampleService) {
         val search = sampleService.search(searchRequest)
         return ResponseEntity.ok(search)
     }
+
+    @PostMapping
+    fun create(@RequestBody sampleEntity: SampleEntity): ResponseEntity<SampleEntity> {
+        val create = sampleService.create(sampleEntity)
+        return ResponseEntity.ok(create)
+    }
 }

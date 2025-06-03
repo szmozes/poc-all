@@ -1,3 +1,5 @@
+
+### search
 POST http://localhost:8080/filter-specification/search
 Content-Type: application/json
 
@@ -19,3 +21,11 @@ Content-Type: application/json
 }
 
 
+### create
+POST http://localhost:8080/filter-specification
+Content-Type: application/json
+
+{
+  "field1": "bbb",
+  "field2": 1
+}
