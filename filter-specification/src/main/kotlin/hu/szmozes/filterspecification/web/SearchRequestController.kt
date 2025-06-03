@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("filter-specification")
+@RequestMapping("/filter-specification")
 class SearchRequestController(private val sampleService: SampleService) {
 
     private val logger = LoggerFactory.getLogger(SearchRequestController::class.java)

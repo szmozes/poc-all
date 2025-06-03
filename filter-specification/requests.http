@@ -1,0 +1,21 @@
+POST http://localhost:8080/filter-specification/search
+Content-Type: application/json
+
+{
+  "specification": {
+    "filters": [
+      {
+        "matchStyle": "EXACT",
+        "propertyPath": "field1",
+        "propertyValue": "aaa"
+      }
+    ],
+    "logic": "AND",
+    "nestedSpecifications": []
+  },
+  "pageNumber": 0,
+  "pageSize": 20,
+  "orders": []
+}
+
+
