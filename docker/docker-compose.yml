@@ -1,0 +1,10 @@
+name: poc-all
+
+services:
+  db:
+    container_name: poc-all-postgres
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5432:5432"
