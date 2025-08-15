@@ -36,9 +36,9 @@ object JpaSpecificationUtils {
         }
     }
 
-    private fun <T> getPath(root: Root<T>, propertyPath: String): Path<Any> {
+    private fun <T> getPath(root: Root<T>, propertyPath: String): Path<*> {
         return propertyPath.split(".")
-            .fold(root as Path<*>) { path, segment -> path.get<Any>(segment) } as Path<Any>
+            .fold(root as Path<*>) { path, segment -> path.get<Any>(segment) }
     }
 
     private fun <T> buildPredicate(
