@@ -1,18 +1,18 @@
 [versions]
-kotlin = "2.1.21"
+kotlin = "2.2.10"
 kengine = "1.0.2"
 mapstruct = "1.6.3"
 springdoc = "2.8.8"
-springBoot = "3.5.0"
+springBoot = "3.5.4"
 reactorNetty = "1.2.6"
 guava = "33.4.8-jre"
 jjwt = "0.12.6"
-springCloud = "2024.0.1"
+springCloud = "2025.0.0"
 assertj = "3.27.3"
 springDependencyManagement = "1.1.7"
 benManesVersions = "0.52.0"
-lombokPlugin = "8.13.1"
-spotless = "7.0.4"
+lombokPlugin = "8.14"
+spotless = "7.2.1"
 
 [libraries]
 kengine = { group = "com.github.bhlangonijr", name = "kengine", version.ref = "kengine" }
