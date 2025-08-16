@@ -1,0 +1,14 @@
+
+### Load sample data
+POST http://localhost:8080/load-sample-data
+Content-Type: application/json
+
+
+### Get permissions
+POST http://localhost:8080/get-permissions
+Content-Type: application/json
+
+{
+  "companyName": "Alno Ltd.",
+  "userName": "Alice"
+}
