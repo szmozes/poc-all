@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service
 class RolePermissionProvider : PermissionProvider {
 
     override fun getPermissions(user: User, company: Company): Set<Permission> = user.companyUsers
-         .find { it.company!!.id == company.id }!!
-         .companyUserRoles
-         .map { it.role!! }
-         .flatMap { it.rolePermissions }
-         .map { it.permission!! }
-         .toSet()
+        .find { it.company!!.id == company.id }!!
+        .companyUserRoles
+        .map { it.role!! }
+        .flatMap { it.rolePermissions }
+        .map { it.permission!! }
+        .toSet()
 }

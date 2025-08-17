@@ -7,4 +7,4 @@ import java.io.Serializable
 data class CompanySubscriptionId(
     val companyId: Long,
     val subscriptionId: Long
-): Serializable
+) : Serializable

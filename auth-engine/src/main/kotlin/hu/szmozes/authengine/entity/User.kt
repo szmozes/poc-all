@@ -9,7 +9,7 @@ import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
 
 @Entity
-@Table(name="user_")
+@Table(name = "user_")
 class User {
 
     @Id

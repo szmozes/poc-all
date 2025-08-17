@@ -25,7 +25,7 @@ object EntityUtils {
         }
     }
 
-    fun toCompanyUserRole(companyUser: CompanyUser, role: Role) : CompanyUserRole {
+    fun toCompanyUserRole(companyUser: CompanyUser, role: Role): CompanyUserRole {
         return CompanyUserRole().also {
             it.id = CompanyUserRoleId(companyUser.id!!, role.id!!)
             it.companyUser = companyUser
