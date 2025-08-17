@@ -121,9 +121,9 @@ class SampleDataService(
         val subscriptionPermission23 = EntityUtils.toSubscriptionPermission(subscription2, permission3)
         subscriptionPermissionRepository.save(subscriptionPermission23)
 
-        val companySubscription11 = EntityUtils.toCompanySubscription(company1, subscription1)
-        companySubscriptionRepository.save(companySubscription11)
-        val companySubscription22 = EntityUtils.toCompanySubscription(company2, subscription2)
-        companySubscriptionRepository.save(companySubscription22)
+        val companySubscription12 = EntityUtils.toCompanySubscription(company1, subscription2)
+        companySubscriptionRepository.save(companySubscription12)
+        val companySubscription21 = EntityUtils.toCompanySubscription(company2, subscription1)
+        companySubscriptionRepository.save(companySubscription21)
     }
 }

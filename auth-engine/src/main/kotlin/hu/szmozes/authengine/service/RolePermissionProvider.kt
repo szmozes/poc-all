@@ -8,15 +8,11 @@ import org.springframework.stereotype.Service
 @Service
 class RolePermissionProvider : PermissionProvider {
 
-    override fun getPermissions(user: User, company: Company): Set<Permission> {
-        val companyUser = user.companyUsers.find { companyUser -> companyUser.company!!.id == company.id }
-
-        val permissions = mutableSetOf<Permission>()
-        companyUser!!.companyUserRoles.forEach { companyUserRole ->
-            companyUserRole.role!!.rolePermissions.forEach { rolePermission ->
-                permissions.add(rolePermission.permission!!)
-            }
-        }
-        return permissions
-    }
+    override fun getPermissions(user: User, company: Company): Set<Permission> = user.companyUsers
+         .find { it.company!!.id == company.id }!!
+         .companyUserRoles
+         .map { it.role!! }
+         .flatMap { it.rolePermissions }
+         .map { it.permission!! }
+         .toSet()
 }
