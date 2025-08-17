@@ -14,12 +14,12 @@ class CompanyUser {
     var id: CompanyUserId? = null
 
     @ManyToOne
-    @MapsId("userId")
-    var user: User? = null
-
-    @ManyToOne
     @MapsId("companyId")
     var company: Company? = null
+
+    @ManyToOne
+    @MapsId("userId")
+    var user: User? = null
 
     @OneToMany(mappedBy = "companyUser", cascade = [CascadeType.ALL])
     var companyUserRoles: MutableList<CompanyUserRole> = mutableListOf()

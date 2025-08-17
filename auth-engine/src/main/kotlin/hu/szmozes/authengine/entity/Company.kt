@@ -16,9 +16,9 @@ class Company {
 
     var name: String? = null
 
-    @OneToMany(mappedBy = "company", cascade = [CascadeType.ALL], orphanRemoval = true)
+    @OneToMany(mappedBy = "company", cascade = [CascadeType.ALL])
     var companySubscriptions: MutableList<CompanySubscription> = mutableListOf()
 
-    @OneToMany(mappedBy = "company", cascade = [CascadeType.ALL], orphanRemoval = true)
+    @OneToMany(mappedBy = "company", cascade = [CascadeType.ALL])
     var companyUsers: MutableList<CompanyUser> = mutableListOf()
 }

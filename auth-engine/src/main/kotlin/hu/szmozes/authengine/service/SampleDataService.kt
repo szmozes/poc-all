@@ -1,19 +1,9 @@
 package hu.szmozes.authengine.service
 
 import hu.szmozes.authengine.entity.Company
-import hu.szmozes.authengine.entity.CompanySubscription
-import hu.szmozes.authengine.entity.CompanySubscriptionId
-import hu.szmozes.authengine.entity.CompanyUser
-import hu.szmozes.authengine.entity.CompanyUserId
-import hu.szmozes.authengine.entity.CompanyUserRole
-import hu.szmozes.authengine.entity.CompanyUserRoleId
 import hu.szmozes.authengine.entity.Permission
 import hu.szmozes.authengine.entity.Role
-import hu.szmozes.authengine.entity.RolePermission
-import hu.szmozes.authengine.entity.RolePermissionId
 import hu.szmozes.authengine.entity.Subscription
-import hu.szmozes.authengine.entity.SubscriptionPermission
-import hu.szmozes.authengine.entity.SubscriptionPermissionId
 import hu.szmozes.authengine.entity.User
 import hu.szmozes.authengine.repository.CompanyRepository
 import hu.szmozes.authengine.repository.CompanySubscriptionRepository
@@ -66,17 +56,11 @@ class SampleDataService(
         }
         userRepository.save(user2)
 
-        val companyUser1 = CompanyUser().apply {
-            id = CompanyUserId(company1.id!!, user1.id!!)
-        }
+        val companyUser1 = EntityUtils.toCompanyUser(company1, user1)
         companyUserRepository.save(companyUser1)
-        val companyUser2 = CompanyUser().apply {
-            id = CompanyUserId(company2.id!!, user1.id!!)
-        }
+        val companyUser2 = EntityUtils.toCompanyUser(company2, user1)
         companyUserRepository.save(companyUser2)
-        val companyUser3 = CompanyUser().apply {
-            id = CompanyUserId(company1.id!!, user2.id!!)
-        }
+        val companyUser3 = EntityUtils.toCompanyUser(company1, user2)
         companyUserRepository.save(companyUser3)
 
         val role1 = Role().apply {
@@ -88,13 +72,9 @@ class SampleDataService(
         }
         roleRepository.save(role2)
 
-        val companyUserRole1 = CompanyUserRole().apply {
-            id = CompanyUserRoleId(companyUser1.id!!, role1.id!!)
-        }
+        val companyUserRole1 = EntityUtils.toCompanyUserRole(companyUser1, role1)
         companyUserRoleRepository.save(companyUserRole1)
-        val companyUserRole2 = CompanyUserRole().apply {
-            id = CompanyUserRoleId(companyUser3.id!!, role2.id!!)
-        }
+        val companyUserRole2 =EntityUtils.toCompanyUserRole(companyUser3, role2)
         companyUserRoleRepository.save(companyUserRole2)
 
         val permission1 = Permission().apply {
@@ -110,25 +90,15 @@ class SampleDataService(
         }
         permissionRepository.save(permission3)
 
-        val rolePermission11 = RolePermission().apply {
-            id = RolePermissionId(role1.id!!, permission1.id!!)
-        }
+        val rolePermission11 = EntityUtils.toRolePermission(role1, permission1)
         rolePermissionRepository.save(rolePermission11)
-        val rolePermission12 = RolePermission().apply {
-            id = RolePermissionId(role1.id!!, permission2.id!!)
-        }
+        val rolePermission12 = EntityUtils.toRolePermission(role1, permission2)
         rolePermissionRepository.save(rolePermission12)
-        val rolePermission13 = RolePermission().apply {
-            id = RolePermissionId(role1.id!!, permission3.id!!)
-        }
+        val rolePermission13 = EntityUtils.toRolePermission(role1, permission3)
         rolePermissionRepository.save(rolePermission13)
-        val rolePermission22 = RolePermission().apply {
-            id = RolePermissionId(role2.id!!, permission2.id!!)
-        }
+        val rolePermission22 = EntityUtils.toRolePermission(role2, permission2)
         rolePermissionRepository.save(rolePermission22)
-        val rolePermission23 = RolePermission().apply {
-            id = RolePermissionId(role2.id!!, permission3.id!!)
-        }
+        val rolePermission23 = EntityUtils.toRolePermission(role2, permission3)
         rolePermissionRepository.save(rolePermission23)
 
         val subscription1 = Subscription().apply {
@@ -140,34 +110,20 @@ class SampleDataService(
         }
         subscriptionRepository.save(subscription2)
 
-        val subscriptionPermission11 = SubscriptionPermission().apply {
-            id = SubscriptionPermissionId(subscription1.id!!, permission1.id!!)
-        }
+        val subscriptionPermission11 = EntityUtils.toSubscriptionPermission(subscription1, permission1)
         subscriptionPermissionRepository.save(subscriptionPermission11)
-        val subscriptionPermission12 = SubscriptionPermission().apply {
-            id = SubscriptionPermissionId(subscription1.id!!, permission2.id!!)
-        }
+        val subscriptionPermission12 = EntityUtils.toSubscriptionPermission(subscription1, permission2)
         subscriptionPermissionRepository.save(subscriptionPermission12)
-        val subscriptionPermission21 = SubscriptionPermission().apply {
-            id = SubscriptionPermissionId(subscription2.id!!, permission1.id!!)
-        }
+        val subscriptionPermission21 = EntityUtils.toSubscriptionPermission(subscription2, permission1)
         subscriptionPermissionRepository.save(subscriptionPermission21)
-        val subscriptionPermission22 = SubscriptionPermission().apply {
-            id = SubscriptionPermissionId(subscription2.id!!, permission2.id!!)
-        }
+        val subscriptionPermission22 = EntityUtils.toSubscriptionPermission(subscription2, permission2)
         subscriptionPermissionRepository.save(subscriptionPermission22)
-        val subscriptionPermission23 = SubscriptionPermission().apply {
-            id = SubscriptionPermissionId(subscription2.id!!, permission3.id!!)
-        }
+        val subscriptionPermission23 = EntityUtils.toSubscriptionPermission(subscription2, permission3)
         subscriptionPermissionRepository.save(subscriptionPermission23)
 
-        val companySubscription11 = CompanySubscription().apply {
-            id = CompanySubscriptionId(company1.id!!, subscription1.id!!)
-        }
+        val companySubscription11 = EntityUtils.toCompanySubscription(company1, subscription1)
         companySubscriptionRepository.save(companySubscription11)
-        val companySubscription22 = CompanySubscription().apply {
-            id = CompanySubscriptionId(company2.id!!, subscription2.id!!)
-        }
+        val companySubscription22 = EntityUtils.toCompanySubscription(company2, subscription2)
         companySubscriptionRepository.save(companySubscription22)
     }
 }
