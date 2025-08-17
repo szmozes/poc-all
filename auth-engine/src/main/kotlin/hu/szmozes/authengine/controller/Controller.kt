@@ -1,6 +1,7 @@
 package hu.szmozes.authengine.controller
 
 import hu.szmozes.authengine.model.GetPermissionsRequest
+import hu.szmozes.authengine.model.SampleData
 import hu.szmozes.authengine.service.PermissionService
 import hu.szmozes.authengine.service.SampleDataService
 import org.springframework.http.ResponseEntity
@@ -17,6 +18,12 @@ class Controller(
     @PostMapping("/load-sample-data")
     fun loadSampleData(): ResponseEntity<Void> {
         sampleDataService.loadSampleData()
+        return ResponseEntity.ok().build()
+    }
+
+    @PostMapping("/load-input-data")
+    fun loadInputData(@RequestBody sampleData: SampleData): ResponseEntity<Void> {
+        sampleDataService.loadInputData(sampleData)
         return ResponseEntity.ok().build()
     }
 

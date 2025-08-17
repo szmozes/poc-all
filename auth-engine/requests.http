@@ -3,6 +3,11 @@
 POST http://localhost:8080/load-sample-data
 Content-Type: application/json
 
+### Load input data
+POST http://localhost:8080/load-input-data
+Content-Type: application/json
+
+< sample-data.json
 
 ### Get permissions
 POST http://localhost:8080/get-permissions

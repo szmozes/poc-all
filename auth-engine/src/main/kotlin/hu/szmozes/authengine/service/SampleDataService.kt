@@ -5,6 +5,7 @@ import hu.szmozes.authengine.entity.Permission
 import hu.szmozes.authengine.entity.Role
 import hu.szmozes.authengine.entity.Subscription
 import hu.szmozes.authengine.entity.User
+import hu.szmozes.authengine.model.SampleData
 import hu.szmozes.authengine.repository.CompanyRepository
 import hu.szmozes.authengine.repository.CompanySubscriptionRepository
 import hu.szmozes.authengine.repository.CompanyUserRepository
@@ -32,11 +33,7 @@ class SampleDataService(
 ) {
 
     fun loadSampleData() {
-        companyRepository.deleteAll()
-        userRepository.deleteAll()
-        permissionRepository.deleteAll()
-        roleRepository.deleteAll()
-        subscriptionRepository.deleteAll()
+        clearDb()
 
         val company1 = Company().apply {
             name = "Alno Ltd."
@@ -74,7 +71,7 @@ class SampleDataService(
 
         val companyUserRole1 = EntityUtils.toCompanyUserRole(companyUser1, role1)
         companyUserRoleRepository.save(companyUserRole1)
-        val companyUserRole2 =EntityUtils.toCompanyUserRole(companyUser3, role2)
+        val companyUserRole2 = EntityUtils.toCompanyUserRole(companyUser3, role2)
         companyUserRoleRepository.save(companyUserRole2)
 
         val permission1 = Permission().apply {
@@ -126,4 +123,69 @@ class SampleDataService(
         val companySubscription21 = EntityUtils.toCompanySubscription(company2, subscription1)
         companySubscriptionRepository.save(companySubscription21)
     }
+
+    private fun clearDb() {
+        companyRepository.deleteAll()
+        userRepository.deleteAll()
+        permissionRepository.deleteAll()
+        roleRepository.deleteAll()
+        subscriptionRepository.deleteAll()
+    }
+
+    fun loadInputData(sampleData: SampleData) {
+        clearDb()
+
+        // Save base entities
+        val companies = sampleData.companies.associateBy(
+            { it.name },
+            { companyRepository.save(Company().apply { name = it.name }) }
+        )
+        val users = sampleData.users.associateBy(
+            { it.name },
+            { userRepository.save(User().apply { name = it.name }) }
+        )
+        val roles = sampleData.roles.associateBy(
+            { it.name },
+            { roleRepository.save(Role().apply { name = it.name }) }
+        )
+        val permissions = sampleData.permissions.associateBy(
+            { it.name },
+            { permissionRepository.save(Permission().apply { name = it.name }) }
+        )
+        val subscriptions = sampleData.subscriptions.associateBy(
+            { it.name },
+            { subscriptionRepository.save(Subscription().apply { name = it.name }) }
+        )
+
+        // Relationships
+        val companyUsers = sampleData.companyUsers.associateBy(
+            { it.company to it.user },
+            { companyUserRepository.save(EntityUtils.toCompanyUser(companies[it.company]!!, users[it.user]!!)) }
+        )
+
+        sampleData.companyUserRoles.forEach {
+            val companyUser = companyUsers[it.companyUser.company to it.companyUser.user]!!
+            val role = roles[it.role]!!
+            companyUserRoleRepository.save(EntityUtils.toCompanyUserRole(companyUser, role))
+        }
+
+        sampleData.rolePermissions.forEach {
+            val role = roles[it.role]!!
+            val permission = permissions[it.permission]!!
+            rolePermissionRepository.save(EntityUtils.toRolePermission(role, permission))
+        }
+
+        sampleData.subscriptionPermissions.forEach {
+            val sub = subscriptions[it.subscription]!!
+            val permission = permissions[it.permission]!!
+            subscriptionPermissionRepository.save(EntityUtils.toSubscriptionPermission(sub, permission))
+        }
+
+        sampleData.companySubscriptions.forEach {
+            val company = companies[it.company]!!
+            val sub = subscriptions[it.subscription]!!
+            companySubscriptionRepository.save(EntityUtils.toCompanySubscription(company, sub))
+        }
+    }
+
 }

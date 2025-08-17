@@ -1,0 +1,50 @@
+{
+  "companies": [
+    { "name": "Alno Ltd." },
+    { "name": "Brui Ltd." }
+  ],
+  "users": [
+    { "name": "Alice" },
+    { "name": "Bob" }
+  ],
+  "roles": [
+    { "name": "admin" },
+    { "name": "accountant" }
+  ],
+  "permissions": [
+    { "name": "view_admin_dashboard" },
+    { "name": "view_invoices" },
+    { "name": "view_premium_settings" }
+  ],
+  "subscriptions": [
+    { "name": "free" },
+    { "name": "pro" }
+  ],
+  "companyUsers": [
+    { "company": "Alno Ltd.", "user": "Alice" },
+    { "company": "Brui Ltd.", "user": "Alice" },
+    { "company": "Alno Ltd.", "user": "Bob" }
+  ],
+  "companyUserRoles": [
+    { "companyUser": { "company": "Alno Ltd.", "user": "Alice" }, "role": "admin" },
+    { "companyUser": { "company": "Alno Ltd.", "user": "Bob" }, "role": "accountant" }
+  ],
+  "rolePermissions": [
+    { "role": "admin", "permission": "view_admin_dashboard" },
+    { "role": "admin", "permission": "view_invoices" },
+    { "role": "admin", "permission": "view_premium_settings" },
+    { "role": "accountant", "permission": "view_invoices" },
+    { "role": "accountant", "permission": "view_premium_settings" }
+  ],
+  "subscriptionPermissions": [
+    { "subscription": "free", "permission": "view_admin_dashboard" },
+    { "subscription": "free", "permission": "view_invoices" },
+    { "subscription": "pro", "permission": "view_admin_dashboard" },
+    { "subscription": "pro", "permission": "view_invoices" },
+    { "subscription": "pro", "permission": "view_premium_settings" }
+  ],
+  "companySubscriptions": [
+    { "company": "Alno Ltd.", "subscription": "pro" },
+    { "company": "Brui Ltd.", "subscription": "free" }
+  ]
+}
