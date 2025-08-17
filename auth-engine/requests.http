@@ -14,6 +14,6 @@ POST http://localhost:8080/get-permissions
 Content-Type: application/json
 
 {
-  "companyName": "Alno Ltd.",
+  "companyName": "Apple Inc.",
   "userName": "Alice"
 }

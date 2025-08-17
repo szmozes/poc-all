@@ -1,7 +1,7 @@
 {
   "companies": [
-    { "name": "Alno Ltd." },
-    { "name": "Brui Ltd." }
+    { "name": "Apple Inc." },
+    { "name": "BMW" }
   ],
   "users": [
     { "name": "Alice" },
@@ -21,13 +21,13 @@
     { "name": "premium" }
   ],
   "companyUsers": [
-    { "company": "Alno Ltd.", "user": "Alice" },
-    { "company": "Brui Ltd.", "user": "Alice" },
-    { "company": "Alno Ltd.", "user": "Bob" }
+    { "company": "Apple Inc.", "user": "Alice" },
+    { "company": "BMW", "user": "Alice" },
+    { "company": "Apple Inc.", "user": "Bob" }
   ],
   "companyUserRoles": [
-    { "companyUser": { "company": "Alno Ltd.", "user": "Alice" }, "role": "admin" },
-    { "companyUser": { "company": "Alno Ltd.", "user": "Bob" }, "role": "member" }
+    { "companyUser": { "company": "Apple Inc.", "user": "Alice" }, "role": "admin" },
+    { "companyUser": { "company": "Apple Inc.", "user": "Bob" }, "role": "member" }
   ],
   "rolePermissions": [
     { "role": "admin", "permission": "view_admin_dashboard" },
@@ -44,7 +44,7 @@
     { "subscription": "premium", "permission": "view_premium_settings" }
   ],
   "companySubscriptions": [
-    { "company": "Alno Ltd.", "subscription": "premium" },
-    { "company": "Brui Ltd.", "subscription": "free" }
+    { "company": "Apple Inc.", "subscription": "premium" },
+    { "company": "BMW", "subscription": "free" }
   ]
 }
