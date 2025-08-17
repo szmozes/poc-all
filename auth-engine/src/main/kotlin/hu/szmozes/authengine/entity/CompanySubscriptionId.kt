@@ -4,7 +4,7 @@ import jakarta.persistence.Embeddable
 import java.io.Serializable
 
 @Embeddable
-data class CompanyUserRoleId(
-    var companyUserId: CompanyUserId,
-    var roleId: Long
-) : Serializable
+data class CompanySubscriptionId(
+    val companyId: Long,
+    val subscriptionId: Long
+): Serializable

@@ -1,6 +1,8 @@
 package hu.szmozes.authengine.service
 
 import hu.szmozes.authengine.entity.Company
+import hu.szmozes.authengine.entity.CompanySubscription
+import hu.szmozes.authengine.entity.CompanySubscriptionId
 import hu.szmozes.authengine.entity.CompanyUser
 import hu.szmozes.authengine.entity.CompanyUserId
 import hu.szmozes.authengine.entity.CompanyUserRole
@@ -14,6 +16,7 @@ import hu.szmozes.authengine.entity.SubscriptionPermission
 import hu.szmozes.authengine.entity.SubscriptionPermissionId
 import hu.szmozes.authengine.entity.User
 import hu.szmozes.authengine.repository.CompanyRepository
+import hu.szmozes.authengine.repository.CompanySubscriptionRepository
 import hu.szmozes.authengine.repository.CompanyUserRepository
 import hu.szmozes.authengine.repository.CompanyUserRoleRepository
 import hu.szmozes.authengine.repository.PermissionRepository
@@ -35,6 +38,7 @@ class SampleDataService(
     private val rolePermissionRepository: RolePermissionRepository,
     private val subscriptionRepository: SubscriptionRepository,
     private val subscriptionPermissionRepository: SubscriptionPermissionRepository,
+    private val companySubscriptionRepository: CompanySubscriptionRepository,
 ) {
 
     fun loadSampleData() {
@@ -157,5 +161,14 @@ class SampleDataService(
             id = SubscriptionPermissionId(subscription2.id!!, permission3.id!!)
         }
         subscriptionPermissionRepository.save(subscriptionPermission23)
+
+        val companySubscription11 = CompanySubscription().apply {
+            id = CompanySubscriptionId(company1.id!!, subscription1.id!!)
+        }
+        companySubscriptionRepository.save(companySubscription11)
+        val companySubscription22 = CompanySubscription().apply {
+            id = CompanySubscriptionId(company2.id!!, subscription2.id!!)
+        }
+        companySubscriptionRepository.save(companySubscription22)
     }
 }
