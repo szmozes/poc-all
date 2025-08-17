@@ -10,11 +10,11 @@ class SubscriptionPermissionProvider : PermissionProvider {
 
     override fun getPermissions(user: User, company: Company): Set<Permission> {
         val permissions = mutableSetOf<Permission>()
-        company.companySubscriptions.forEach { companySubscription -> {
+        company.companySubscriptions.forEach { companySubscription ->
             companySubscription.subscription!!.subscriptionPermissions.forEach { subscriptionPermission ->
                 permissions.add(subscriptionPermission.permission!!)
             }
-        } }
+        }
         return permissions
     }
 }
