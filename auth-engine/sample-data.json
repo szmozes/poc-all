@@ -9,16 +9,16 @@
   ],
   "roles": [
     { "name": "admin" },
-    { "name": "accountant" }
+    { "name": "member" }
   ],
   "permissions": [
     { "name": "view_admin_dashboard" },
-    { "name": "view_invoices" },
+    { "name": "view_company_settings" },
     { "name": "view_premium_settings" }
   ],
   "subscriptions": [
     { "name": "free" },
-    { "name": "pro" }
+    { "name": "premium" }
   ],
   "companyUsers": [
     { "company": "Alno Ltd.", "user": "Alice" },
@@ -27,24 +27,24 @@
   ],
   "companyUserRoles": [
     { "companyUser": { "company": "Alno Ltd.", "user": "Alice" }, "role": "admin" },
-    { "companyUser": { "company": "Alno Ltd.", "user": "Bob" }, "role": "accountant" }
+    { "companyUser": { "company": "Alno Ltd.", "user": "Bob" }, "role": "member" }
   ],
   "rolePermissions": [
     { "role": "admin", "permission": "view_admin_dashboard" },
-    { "role": "admin", "permission": "view_invoices" },
+    { "role": "admin", "permission": "view_company_settings" },
     { "role": "admin", "permission": "view_premium_settings" },
-    { "role": "accountant", "permission": "view_invoices" },
-    { "role": "accountant", "permission": "view_premium_settings" }
+    { "role": "member", "permission": "view_company_settings" },
+    { "role": "member", "permission": "view_premium_settings" }
   ],
   "subscriptionPermissions": [
     { "subscription": "free", "permission": "view_admin_dashboard" },
-    { "subscription": "free", "permission": "view_invoices" },
-    { "subscription": "pro", "permission": "view_admin_dashboard" },
-    { "subscription": "pro", "permission": "view_invoices" },
-    { "subscription": "pro", "permission": "view_premium_settings" }
+    { "subscription": "free", "permission": "view_company_settings" },
+    { "subscription": "premium", "permission": "view_admin_dashboard" },
+    { "subscription": "premium", "permission": "view_company_settings" },
+    { "subscription": "premium", "permission": "view_premium_settings" }
   ],
   "companySubscriptions": [
-    { "company": "Alno Ltd.", "subscription": "pro" },
+    { "company": "Alno Ltd.", "subscription": "premium" },
     { "company": "Brui Ltd.", "subscription": "free" }
   ]
 }
