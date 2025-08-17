@@ -18,4 +18,7 @@ class Company {
 
     @OneToMany(mappedBy = "company", cascade = [CascadeType.ALL], orphanRemoval = true)
     var companySubscriptions: MutableList<CompanySubscription> = mutableListOf()
+
+    @OneToMany(mappedBy = "company", cascade = [CascadeType.ALL], orphanRemoval = true)
+    var companyUsers: MutableList<CompanyUser> = mutableListOf()
 }

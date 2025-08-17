@@ -44,10 +44,9 @@ class SampleDataService(
     fun loadSampleData() {
         companyRepository.deleteAll()
         userRepository.deleteAll()
-        companyUserRepository.deleteAll()
-        roleRepository.deleteAll()
-        companyUserRoleRepository.deleteAll()
         permissionRepository.deleteAll()
+        roleRepository.deleteAll()
+        subscriptionRepository.deleteAll()
 
         val company1 = Company().apply {
             name = "Alno Ltd."

@@ -3,6 +3,7 @@ package hu.szmozes.authengine.service
 import hu.szmozes.authengine.model.GetPermissionsRequest
 import hu.szmozes.authengine.repository.CompanyRepository
 import hu.szmozes.authengine.repository.UserRepository
+import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 
 @Service
@@ -12,6 +13,8 @@ class PermissionService(
     private val rolePermissionProvider: RolePermissionProvider,
     private val subscriptionPermissionProvider: SubscriptionPermissionProvider,
 ) {
+
+    @Transactional
     fun getPermissions(request: GetPermissionsRequest): List<String> {
         val company = companyRepository.findByName(request.companyName)
         val user = userRepository.findByName(request.userName)
