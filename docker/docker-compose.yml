@@ -3,8 +3,10 @@ name: poc-all
 services:
   db:
     container_name: poc-all-postgres
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: postgres:17
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d:ro
     ports:
       - "5432:5432"
