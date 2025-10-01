@@ -15,6 +15,7 @@ lombokPlugin = "9.0.0"
 spotless = "8.0.0"
 
 [libraries]
+junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher" }
 kengine = { group = "com.github.bhlangonijr", name = "kengine", version.ref = "kengine" }
 kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
@@ -55,6 +56,7 @@ slf4j-api = { group = "org.slf4j", name = "slf4j-api" }
 h2 = { group = "com.h2database", name = "h2" }
 
 [plugins]
+java = { id = "java" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 spring-boot = { id = "org.springframework.boot", version.ref = "springBoot" }
 spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "springDependencyManagement" }

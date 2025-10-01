@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 include(":filter-specification")
 include(":auth-engine")
+include(":benchmark")
