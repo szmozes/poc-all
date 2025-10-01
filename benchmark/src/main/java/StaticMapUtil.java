@@ -8,11 +8,11 @@ public class StaticMapUtil {
                     "D", "Date",
                     "E", "Eggplant");
 
-    public String toFruit(String letter) {
+    public static String toFruit(String letter) {
         return STATIC_MAP.get(letter);
     }
 
-    public String toFruit2(String letter) {
+    public static String toFruit2(String letter) {
         Map<String, String> map =
                 Map.of("A", "Apple",
                         "B", "Banana",

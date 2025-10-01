@@ -10,10 +10,10 @@ public class BenchmarkTest {
 
     @Test
     public void benchmarkTest() {
-        int iterations = 1_000_000;
+        int iterations = 50_000_000;
         
         // Warm-up phase (helps JIT compilation)
-        for (int i = 0; i < 10_000; i++) {
+        for (int i = 0; i < 1_000_000; i++) {
             statement1();
             statement2();
             statement3();
@@ -73,19 +73,14 @@ public class BenchmarkTest {
     
     // Replace these with your actual statements to benchmark
     private void statement1() {
-        // Example: String concatenation
-        String result = "Hello" + " " + "World";
+        StaticMapUtil.toFruit("A");
     }
     
     private void statement2() {
-        // Example: StringBuilder
-        StringBuilder sb = new StringBuilder();
-        sb.append("Hello").append(" ").append("World");
-        String result = sb.toString();
+        StaticMapUtil.toFruit2("A");
     }
     
     private void statement3() {
-        // Example: String.format
-        String result = String.format("%s %s", "Hello", "World");
+        StaticMapUtil.toFruit3("A");
     }
 }
