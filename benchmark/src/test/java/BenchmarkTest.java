@@ -10,39 +10,47 @@ public class BenchmarkTest {
 
     @Test
     public void benchmarkTest() {
-        int iterations = 50_000_000;
-        
-        // Warm-up phase (helps JIT compilation)
-        for (int i = 0; i < 1_000_000; i++) {
-            statement1();
-            statement2();
-            statement3();
+        int iterations = 1_000_000;
+
+        // Pre-generate random letters outside of benchmark
+        String[] randomLetters = new String[iterations];
+        for (int i = 0; i < iterations; i++) {
+            char letter = (char) ('A' + (int) (Math.random() * 5));
+            randomLetters[i] = String.valueOf(letter);
         }
-        
+
+        // Warm-up phase (helps JIT compilation)
+        for (int i = 0; i < 10_000; i++) {
+            String letter = randomLetters[i % iterations];
+            statement1(letter);
+            statement2(letter);
+            statement3(letter);
+        }
+
         // Benchmark Statement 1
         long startTime1 = System.nanoTime();
         for (int i = 0; i < iterations; i++) {
-            statement1();
+            statement1(randomLetters[i]);
         }
         long endTime1 = System.nanoTime();
         long duration1 = endTime1 - startTime1;
-        
+
         // Benchmark Statement 2
         long startTime2 = System.nanoTime();
         for (int i = 0; i < iterations; i++) {
-            statement2();
+            statement2(randomLetters[i]);
         }
         long endTime2 = System.nanoTime();
         long duration2 = endTime2 - startTime2;
-        
+
         // Benchmark Statement 3
         long startTime3 = System.nanoTime();
         for (int i = 0; i < iterations; i++) {
-            statement3();
+            statement3(randomLetters[i]);
         }
         long endTime3 = System.nanoTime();
         long duration3 = endTime3 - startTime3;
-        
+
         // Print results
         System.out.println("=== Benchmark Results ===");
         System.out.println("Iterations: " + iterations);
@@ -62,7 +70,7 @@ public class BenchmarkTest {
         System.out.println("  Average time per iteration: " + (duration3 / iterations) + " ns");
         System.out.println("  Total time in ms: " + (duration3 / 1_000_000.0) + " ms");
         System.out.println();
-        
+
         // Find fastest
         long fastest = Math.min(duration1, Math.min(duration2, duration3));
         System.out.println("=== Comparison ===");
@@ -70,17 +78,17 @@ public class BenchmarkTest {
         System.out.println("Statement 2 is " + String.format("%.2fx", (double) duration2 / fastest) + " relative to fastest");
         System.out.println("Statement 3 is " + String.format("%.2fx", (double) duration3 / fastest) + " relative to fastest");
     }
-    
+
     // Replace these with your actual statements to benchmark
-    private void statement1() {
-        StaticMapUtil.toFruit("A");
+    private void statement1(String letter) {
+        StaticMapUtil.toFruit(letter);
     }
-    
-    private void statement2() {
-        StaticMapUtil.toFruit2("A");
+
+    private void statement2(String letter) {
+        StaticMapUtil.toFruit2(letter);
     }
-    
-    private void statement3() {
-        StaticMapUtil.toFruit3("A");
+
+    private void statement3(String letter) {
+        StaticMapUtil.toFruit3(letter);
     }
 }
