@@ -16,6 +16,7 @@ public class BenchmarkTest {
         for (int i = 0; i < 10_000; i++) {
             statement1();
             statement2();
+            statement3();
         }
         
         // Benchmark Statement 1
@@ -34,6 +35,14 @@ public class BenchmarkTest {
         long endTime2 = System.nanoTime();
         long duration2 = endTime2 - startTime2;
         
+        // Benchmark Statement 3
+        long startTime3 = System.nanoTime();
+        for (int i = 0; i < iterations; i++) {
+            statement3();
+        }
+        long endTime3 = System.nanoTime();
+        long duration3 = endTime3 - startTime3;
+        
         // Print results
         System.out.println("=== Benchmark Results ===");
         System.out.println("Iterations: " + iterations);
@@ -48,8 +57,18 @@ public class BenchmarkTest {
         System.out.println("  Average time per iteration: " + (duration2 / iterations) + " ns");
         System.out.println("  Total time in ms: " + (duration2 / 1_000_000.0) + " ms");
         System.out.println();
-        System.out.println("Statement 1 is " + String.format("%.2f", (double) duration1 / duration2) + "x " + 
-                          (duration1 > duration2 ? "slower" : "faster") + " than Statement 2");
+        System.out.println("Statement 3:");
+        System.out.println("  Total time: " + duration3 + " ns");
+        System.out.println("  Average time per iteration: " + (duration3 / iterations) + " ns");
+        System.out.println("  Total time in ms: " + (duration3 / 1_000_000.0) + " ms");
+        System.out.println();
+        
+        // Find fastest
+        long fastest = Math.min(duration1, Math.min(duration2, duration3));
+        System.out.println("=== Comparison ===");
+        System.out.println("Statement 1 is " + String.format("%.2fx", (double) duration1 / fastest) + " relative to fastest");
+        System.out.println("Statement 2 is " + String.format("%.2fx", (double) duration2 / fastest) + " relative to fastest");
+        System.out.println("Statement 3 is " + String.format("%.2fx", (double) duration3 / fastest) + " relative to fastest");
     }
     
     // Replace these with your actual statements to benchmark
@@ -63,5 +82,10 @@ public class BenchmarkTest {
         StringBuilder sb = new StringBuilder();
         sb.append("Hello").append(" ").append("World");
         String result = sb.toString();
+    }
+    
+    private void statement3() {
+        // Example: String.format
+        String result = String.format("%s %s", "Hello", "World");
     }
 }
