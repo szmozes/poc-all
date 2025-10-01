@@ -30,7 +30,8 @@ public class BenchmarkTest {
         // Benchmark Statement 1
         long startTime1 = System.nanoTime();
         for (int i = 0; i < iterations; i++) {
-            statement1(randomLetters[i]);
+            String randomLetter = randomLetters[i];
+            statement1(randomLetter);
         }
         long endTime1 = System.nanoTime();
         long duration1 = endTime1 - startTime1;
@@ -38,7 +39,8 @@ public class BenchmarkTest {
         // Benchmark Statement 2
         long startTime2 = System.nanoTime();
         for (int i = 0; i < iterations; i++) {
-            statement2(randomLetters[i]);
+            String randomLetter = randomLetters[i];
+            statement2(randomLetter);
         }
         long endTime2 = System.nanoTime();
         long duration2 = endTime2 - startTime2;
@@ -46,7 +48,8 @@ public class BenchmarkTest {
         // Benchmark Statement 3
         long startTime3 = System.nanoTime();
         for (int i = 0; i < iterations; i++) {
-            statement3(randomLetters[i]);
+            String randomLetter = randomLetters[i];
+            statement3(randomLetter);
         }
         long endTime3 = System.nanoTime();
         long duration3 = endTime3 - startTime3;
