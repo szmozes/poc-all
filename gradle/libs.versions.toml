@@ -13,9 +13,10 @@ springDependencyManagement = "1.1.7"
 benManesVersions = "0.53.0"
 lombokPlugin = "9.0.0"
 spotless = "8.0.0"
+junitPlatformLauncher = "6.0.0"
 
 [libraries]
-junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher" }
+junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher", version.ref = "junitPlatformLauncher" }
 kengine = { group = "com.github.bhlangonijr", name = "kengine", version.ref = "kengine" }
 kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
