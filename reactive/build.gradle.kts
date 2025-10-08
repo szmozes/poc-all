@@ -9,6 +9,7 @@ plugins {
 dependencies {
     implementation(platform(libs.spring.cloud.dependencies))
     implementation(libs.spring.boot.starter.actuator)
+    implementation(libs.spring.boot.starter.webflux)
     implementation(libs.spring.boot.starter.web)
     implementation(libs.kotlin.reflect)
     implementation(libs.kotlin.stdlib)

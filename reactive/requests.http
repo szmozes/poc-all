@@ -1,3 +1,6 @@
 
 ### imperative
 GET http://localhost:8080/imperative
+
+### reactive
+GET http://localhost:8080/reactive
