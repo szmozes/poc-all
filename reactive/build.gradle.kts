@@ -1,3 +1,5 @@
+description = "reactive"
+
 plugins {
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.dependency.management)
@@ -18,7 +20,8 @@ dependencies {
     implementation(libs.kotlinx.coroutines.reactor)
     runtimeOnly(libs.postgres)
     testImplementation(libs.spring.boot.starter.test)
-    testRuntimeOnly(libs.junit.platform.launcher)
 }
 
-description = "reactive"
+tasks.withType<Test> {
+    useJUnitPlatform()
+}

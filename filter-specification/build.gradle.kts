@@ -1,3 +1,5 @@
+description = "filter-specification"
+
 plugins {
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.dependency.management)
@@ -15,6 +17,9 @@ dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.stdlib)
     runtimeOnly(libs.postgres)
+    testImplementation(libs.spring.boot.starter.test)
 }
 
-description = "filter-specification"
+tasks.withType<Test> {
+    useJUnitPlatform()
+}

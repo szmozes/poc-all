@@ -1,3 +1,5 @@
+description = "benchmark"
+
 plugins {
     alias(libs.plugins.java)
     alias(libs.plugins.spring.dependency.management)
@@ -8,6 +10,6 @@ dependencies {
     testRuntimeOnly(libs.junit.platform.launcher)
 }
 
-tasks.test {
+tasks.withType<Test> {
     useJUnitPlatform()
 }
