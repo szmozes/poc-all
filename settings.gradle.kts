@@ -2,20 +2,14 @@ rootProject.name = "poc-all"
 
 pluginManagement {
     repositories {
-        maven {
-            url = uri("http://localhost:7999/repository/maven-public/")
-            isAllowInsecureProtocol = true
-        }
+        gradlePluginPortal()
     }
 }
 
 dependencyResolutionManagement {
     repositoriesMode = RepositoriesMode.FAIL_ON_PROJECT_REPOS
     repositories {
-        maven {
-            url = uri("http://localhost:7999/repository/maven-public/")
-            isAllowInsecureProtocol = true
-        }
+        mavenCentral()
     }
 }
 
