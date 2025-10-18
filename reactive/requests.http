@@ -7,3 +7,6 @@ GET http://localhost:8080/reactive
 
 ### list
 GET http://localhost:8080/list
+
+### [coroutine] list
+GET http://localhost:8080/list/coroutine
