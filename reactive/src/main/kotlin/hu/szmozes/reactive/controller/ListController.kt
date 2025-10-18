@@ -1,0 +1,33 @@
+package hu.szmozes.reactive.controller
+
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RestController
+import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
+import reactor.core.scheduler.Schedulers
+import kotlin.random.Random
+
+@RestController
+class ListController {
+
+    @GetMapping("/list")
+    fun reactive(): Mono<ResponseEntity<List<List<Int>>>> {
+        val numberOfLists = Random.nextInt(2, 5)
+        val listSizes = List(numberOfLists) { 2 }
+
+        return Flux.fromIterable(listSizes)
+            .flatMap { s ->
+                Mono.fromCallable { getIntList(s) }
+                    .subscribeOn(Schedulers.boundedElastic())
+            }
+            .collectList()
+            .map { ResponseEntity.ok(it) }
+    }
+
+    private fun getIntList(size: Int): List<Int> {
+        Thread.sleep(2000)
+        return List(size) { Random.nextInt(1, 5) }
+    }
+
+}
