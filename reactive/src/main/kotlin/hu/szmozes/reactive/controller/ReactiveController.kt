@@ -41,41 +41,47 @@ class ReactiveController {
             }
     }
 
-    private fun random1(): Mono<List<Int>> {
+    private fun <T> createBlockingMono(block: () -> T): Mono<T> {
         return Mono.fromCallable {
+            block()
+        }.subscribeOn(Schedulers.boundedElastic())
+    }
+
+    private fun random1(): Mono<List<Int>> {
+        return createBlockingMono {
             Thread.sleep(2000)
             List(5) { Random.nextInt(1, 101) }
-        }.subscribeOn(Schedulers.boundedElastic())
+        }
     }
 
     private fun random2(): Mono<List<Int>> {
-        return Mono.fromCallable {
+        return createBlockingMono {
             Thread.sleep(2000)
             List(5) { Random.nextInt(1, 101) }
-        }.subscribeOn(Schedulers.boundedElastic())
+        }
     }
 
     private fun random3(): Mono<List<Int>> {
-        return Mono.fromCallable {
+        return createBlockingMono {
             Thread.sleep(2000)
             List(5) { Random.nextInt(1, 101) }
-        }.subscribeOn(Schedulers.boundedElastic())
+        }
     }
 
     private fun random4(): Mono<List<Int>> {
-        return Mono.fromCallable {
+        return createBlockingMono {
             Thread.sleep(2000)
             if (true) {
                 throw RuntimeException("Something went wrong!")
             }
             List(5) { Random.nextInt(1, 101) }
-        }.subscribeOn(Schedulers.boundedElastic())
+        }
     }
 
     private fun random5(): Mono<List<Int>> {
-        return Mono.fromCallable {
+        return createBlockingMono {
             Thread.sleep(2000)
             List(5) { Random.nextInt(1, 101) }
-        }.subscribeOn(Schedulers.boundedElastic())
+        }
     }
 }
