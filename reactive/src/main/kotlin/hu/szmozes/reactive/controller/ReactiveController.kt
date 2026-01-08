@@ -43,7 +43,7 @@ class ReactiveController {
             }
     }
 
-    private fun <T> createBlockingMono(block: () -> T): Mono<T> {
+    private fun <T : Any> createBlockingMono(block: () -> T): Mono<T> {
         return Mono.fromCallable {
             block()
         }.subscribeOn(Schedulers.boundedElastic())

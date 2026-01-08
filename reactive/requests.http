@@ -5,8 +5,11 @@ GET http://localhost:8080/imperative
 ### reactive
 GET http://localhost:8080/reactive
 
-### list
+### [reactor] list
 GET http://localhost:8080/list
 
 ### [coroutine] list
 GET http://localhost:8080/list/coroutine
+
+### [java21] list
+GET http://localhost:8080/list/java21scope
