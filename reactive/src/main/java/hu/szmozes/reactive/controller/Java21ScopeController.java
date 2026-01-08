@@ -6,25 +6,31 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.StructuredTaskScope;
 import java.util.stream.IntStream;
 
 @RestController
 public class Java21ScopeController {
 
     @GetMapping("/list/java21scope")
-    public ResponseEntity<List<List<Integer>>> java21Scope() {
+    public ResponseEntity<List<List<Integer>>> java21Scope() throws Throwable {
         var numberOfLists = new Random().nextInt(2, 5);
         var listSizes = IntStream.range(0, numberOfLists)
-                .mapToObj(i -> 2)
+                .mapToObj(_ -> 2)
                 .toList();
 
-        List<List<Integer>> res = IntStream
-                .range(0, numberOfLists)
-                .mapToObj(listSizes::get)
-                .map(this::getIntList)
-                .toList();
-        return ResponseEntity.ok(res);
-
+        try (var scope = StructuredTaskScope.open()) {
+            var subtasks = IntStream
+                    .range(0, numberOfLists)
+                    .mapToObj(listSizes::get)
+                    .map(size -> scope.fork(() -> getIntList(size)))
+                    .toList();
+            scope.join();
+            var res = subtasks.stream()
+                    .map(StructuredTaskScope.Subtask::get)
+                    .toList();
+            return ResponseEntity.ok(res);
+        }
     }
 
     private List<Integer> getIntList(int size) {
