@@ -17,7 +17,7 @@ class ListController {
 
     @GetMapping("/list")
     fun reactive(): Mono<ResponseEntity<List<List<Int>>>> {
-        val numberOfLists = Random.nextInt(2, 5)
+        val numberOfLists = 100
         val listSizes = List(numberOfLists) { 2 }
 
         return Flux.fromIterable(listSizes)
@@ -36,7 +36,7 @@ class ListController {
 
     @GetMapping("/list/coroutine")
     suspend fun coroutine(): ResponseEntity<List<List<Int>>> {
-        val numberOfLists = Random.nextInt(2, 5)
+        val numberOfLists = 100
         val listSizes = List(numberOfLists) { 2 }
 
         val results: List<List<Int>> = coroutineScope {

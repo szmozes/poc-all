@@ -14,7 +14,7 @@ public class Java21ScopeController {
 
     @GetMapping("/list/java21scope")
     public ResponseEntity<List<List<Integer>>> java21Scope() throws Throwable {
-        var numberOfLists = new Random().nextInt(2, 5);
+        var numberOfLists = 100;
         var listSizes = IntStream.range(0, numberOfLists)
                 .mapToObj(_ -> 2)
                 .toList();
@@ -39,7 +39,7 @@ public class Java21ScopeController {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        return IntStream.range(0, size).boxed().toList();
+        return IntStream.range(0, size).map(_ -> new Random().nextInt(10)).boxed().toList();
     }
 
 }
