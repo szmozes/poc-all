@@ -11,6 +11,9 @@ springCloud = "2025.1.0"
 assertj = "3.27.3"
 springDependencyManagement = "1.1.7"
 benManesVersions = "0.53.0"
+jooq = "3.19.18"
+liquibase = "4.31.0"
+jooqPlugin = "3.19.18"
 lombokPlugin = "9.1.0"
 spotless = "8.1.0"
 junitPlatformLauncher = "6.0.1"
@@ -31,6 +34,7 @@ spring-boot-starter = { group = "org.springframework.boot", name = "spring-boot-
 spring-boot-starter-data-rest = { group = "org.springframework.boot", name = "spring-boot-starter-data-rest", version.ref = "springBoot" }
 spring-boot-starter-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator" }
 spring-boot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version.ref = "springBoot" }
+spring-boot-starter-jooq = { group = "org.springframework.boot", name = "spring-boot-starter-jooq", version.ref = "springBoot" }
 spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "springBoot" }
 spring-boot-starter-webflux = { group = "org.springframework.boot", name = "spring-boot-starter-webflux" }
 spring-boot-starter-aop = { group = "org.springframework.boot", name = "spring-boot-starter-aop" }
@@ -58,6 +62,10 @@ jackson-kotlin = { group = "com.fasterxml.jackson.module", name = "jackson-modul
 jakarta-persistence-api = { group = "jakarta.persistence", name = "jakarta.persistence-api" }
 slf4j-api = { group = "org.slf4j", name = "slf4j-api" }
 h2 = { group = "com.h2database", name = "h2" }
+liquibase-core = { group = "org.liquibase", name = "liquibase-core", version.ref = "liquibase" }
+spring-boot-starter-liquibase = { group = "org.springframework.boot", name = "spring-boot-starter-liquibase" }
+jooq-codegen = { group = "org.jooq", name = "jooq-codegen", version.ref = "jooq" }
+jooq-meta-extensions-liquibase = { group = "org.jooq", name = "jooq-meta-extensions-liquibase", version.ref = "jooq" }
 
 [plugins]
 java = { id = "java" }
@@ -71,3 +79,4 @@ lombok = { id = "io.freefair.lombok", version.ref = "lombokPlugin" }
 gradle-java = { id = "org.gradle.java" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 kotlin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
+jooq = { id = "org.jooq.jooq-codegen-gradle", version.ref = "jooqPlugin" }

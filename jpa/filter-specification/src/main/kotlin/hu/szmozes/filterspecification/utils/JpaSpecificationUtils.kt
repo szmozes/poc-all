@@ -10,8 +10,8 @@ import org.springframework.data.jpa.domain.Specification
 
 object JpaSpecificationUtils {
 
-    fun <T> toJpaSpecification(specification: SearchRequest.Specification): Specification<T> {
-        return Specification { root: Root<T>, query: CriteriaQuery<*>?, cb: CriteriaBuilder ->
+    fun <T: Any> toJpaSpecification(specification: SearchRequest.Specification): Specification<T> {
+        return Specification { root: Root<T>, query: CriteriaQuery<*>, cb: CriteriaBuilder ->
 
             // List of predicates from filters
             val filterPredicates = specification.filters.mapNotNull { filter ->

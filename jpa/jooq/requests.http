@@ -1,0 +1,23 @@
+
+### create author
+POST http://localhost:8081/api/authors
+Content-Type: application/json
+
+{
+  "firstName": "F",
+  "lastName": "L",
+  "id": 1
+}
+
+### create book
+POST http://localhost:8081/api/books
+Content-Type: application/json
+
+{
+  "id": 1,
+  "authorId": 1,
+  "title": "Book 1"
+}
+
+### get books
+GET http://localhost:8081/api/books

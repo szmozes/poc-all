@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: jooq-sample
+  datasource:
+    url: jdbc:postgresql://localhost:5432/jooq
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  jooq:
+    sql-dialect: postgres
+
+logging:
+  level:
+    org.jooq.tools.LoggerListener: debug
+
+server:
+  port: 8081
