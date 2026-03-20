@@ -6,7 +6,7 @@ import org.springframework.web.service.annotation.HttpExchange
 
 data class Post(val id: Int, val title: String, val body: String, val userId: Int)
 
-@HttpExchange("/posts")
+@HttpExchange($$"${client.baseUrl:https://jsonplaceholder.typicode.com}/posts")
 interface PostClient {
 
     @GetExchange
