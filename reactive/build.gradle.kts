@@ -15,7 +15,6 @@ dependencies {
     implementation(libs.spring.boot.starter.web)
     implementation(libs.kotlin.reflect)
     implementation(libs.kotlin.stdlib)
-    implementation(libs.kotlin.stdlib)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.reactor)
     runtimeOnly(libs.postgres)
